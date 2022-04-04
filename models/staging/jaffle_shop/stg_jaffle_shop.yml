@@ -1,0 +1,39 @@
+version: 2
+models:
+  - name: stg_customers
+    description: One unique Customer per Row
+    columns:
+      - name: customer_id
+        description: Primary Key for stg_Customers
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: Customers first Name
+      - name: last_name
+        description: Last / Family Name of a customer.
+      - name: fake column
+        type: JUNK
+        description: trying to fackup dbt doc generator
+  - name: stg_orders
+    columns:
+      - name: order_id
+        tests:
+          - unique
+          - not_null
+      - name: status
+        description: '{{ doc("order_status") }}'
+        tests:
+          - accepted_values:
+              values:
+                - completed
+                - shipped
+                - returned
+                - placed
+                - return_pending
+      - name: customer_id
+        description: Foreign key to stg_customers.customer_id.
+        tests:
+          - relationships:
+              to: ref('stg_customers')
+              field: customer_id
