@@ -14,7 +14,7 @@ models:
         description: Last / Family Name of a customer.
       - name: fake column
         type: JUNK
-        description: trying to fackup dbt doc generator
+        description: trying to irritate dbt doc generator
   - name: stg_orders
     columns:
       - name: order_id
@@ -22,7 +22,7 @@ models:
           - unique
           - not_null
       - name: status
-        description: '{{ doc("order_status") }}'
+        description: '{{ doc("jaffle_shop__order_status") }}'
         tests:
           - accepted_values:
               values:

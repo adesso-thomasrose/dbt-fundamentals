@@ -1,4 +1,4 @@
-{% docs order_status %}
+{% docs jaffle_shop__order_status %}
 	
 One of the following values: 
 
